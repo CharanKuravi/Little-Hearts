@@ -9,6 +9,7 @@ server/node_modules/
 .env.development.local
 .env.test.local
 .env.production.local
+server/.env
 
 # Build outputs
 client/dist/
@@ -36,3 +37,8 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Package lock files (optional - uncomment if you want to exclude)
+# package-lock.json
+# client/package-lock.json
+# server/package-lock.json
