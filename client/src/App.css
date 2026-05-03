@@ -1,4 +1,0 @@
-/* App-level styles — all component styles are inline */
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
