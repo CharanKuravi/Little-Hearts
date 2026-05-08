@@ -61,7 +61,7 @@ export default function LoginPage() {
           <h1 style={{ fontSize: '26px', fontWeight: 800, color: 'var(--label)', letterSpacing: '-0.035em', marginBottom: '6px' }}>
             Welcome back
           </h1>
-          <p style={{ color: 'var(--label-3)', fontSize: '15px' }}>Sign in to your LifeLink account</p>
+          <p style={{ color: 'var(--label-3)', fontSize: '15px' }}>Sign in to your Little Hearts account</p>
         </div>
 
         {/* Card */}
@@ -103,7 +103,7 @@ export default function LoginPage() {
           <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid var(--sep)', textAlign: 'center' }}>
             <p style={{ fontSize: '14px', color: 'var(--label-3)' }}>
               Don't have an account?{' '}
-              <Link to="/register" style={{ color: 'var(--red)', fontWeight: 600, textDecoration: 'none' }}>Join LifeLink</Link>
+              <Link to="/register" style={{ color: 'var(--red)', fontWeight: 600, textDecoration: 'none' }}>Join Little Hearts</Link>
             </p>
           </div>
         </div>
@@ -115,7 +115,7 @@ export default function LoginPage() {
           border: '1px solid rgba(0,122,255,0.15)',
           fontSize: '13px', color: '#0055CC', textAlign: 'center',
         }}>
-          Demo: Try username <strong>rahul</strong> with password <strong>password123</strong>
+          Demo: Try username <strong>john</strong> with password <strong>password123</strong>
         </div>
       </div>
     </div>

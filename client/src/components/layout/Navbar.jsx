@@ -66,7 +66,7 @@ export default function Navbar() {
             <Heart size={16} color="#fff" fill="#fff" className="animate-heartbeat" />
           </div>
           <span style={{ fontSize: '17px', fontWeight: 800, color: 'var(--label)', letterSpacing: '-0.04em' }}>
-            Life<span style={{ color: 'var(--red)' }}>Link</span>
+            Little<span style={{ color: 'var(--red)' }}>Hearts</span>
           </span>
         </Link>
 

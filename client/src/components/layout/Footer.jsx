@@ -29,7 +29,7 @@ export default function Footer() {
                 <Heart size={18} color="#fff" fill="#fff" />
               </div>
               <span style={{ fontSize: '18px', fontWeight: 800, color: '#fff', letterSpacing: '-0.03em' }}>
-                Life<span style={{ color: '#FF3B30' }}>Link</span>
+                Little<span style={{ color: '#FF3B30' }}>Hearts</span>
               </span>
             </div>
             <p style={{ fontSize: '14px', lineHeight: 1.6, maxWidth: '240px' }}>
@@ -97,8 +97,8 @@ export default function Footer() {
               Emergency
             </h4>
             {[
-              { icon: <Phone size={14} />, text: '1-800-LIFELINK' },
-              { icon: <Mail size={14} />, text: 'help@lifelink.org' },
+              { icon: <Phone size={14} />, text: '1-800-LIL-HEARTS' },
+              { icon: <Mail size={14} />, text: 'help@littlehearts.org' },
               { icon: <MapPin size={14} />, text: 'Available Nationwide' },
             ].map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', fontSize: '14px' }}>
@@ -119,7 +119,7 @@ export default function Footer() {
           gap: '12px'
         }}>
           <p style={{ fontSize: '13px' }}>
-            © 2025 LifeLink Blood Bank. Built with ❤️ to save lives.
+            © 2025 Little Hearts Blood Bank. Built to save lives.
           </p>
           <p style={{ fontSize: '13px' }}>
             Free. Transparent. Community-driven.

@@ -65,7 +65,7 @@ export default function HomePage() {
               lineHeight:1.65, marginBottom:'36px', maxWidth:'500px',
               letterSpacing:'-0.01em',
             }}>
-              LifeLink connects donors directly with recipients — no cash, no exploitation, just humanity helping humanity.
+              Little Hearts connects donors directly with recipients — no cash, no exploitation, just humanity helping humanity.
             </p>
 
             <div style={{
@@ -212,10 +212,10 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* ── Why LifeLink ── */}
+      {/* ── Why Little Hearts ── */}
       <section style={{ padding:'60px 24px', background:'var(--bg)' }}>
         <div style={{ maxWidth:'1200px', margin:'0 auto' }}>
-          <p className="section-label" style={{ textAlign:'center', marginBottom:'6px' }}>Why LifeLink</p>
+          <p className="section-label" style={{ textAlign:'center', marginBottom:'6px' }}>Why Little Hearts</p>
           <h2 style={{ fontSize:'28px', fontWeight:800, color:'var(--label)', letterSpacing:'-0.035em', textAlign:'center', marginBottom:'36px' }}>
             Built different
           </h2>

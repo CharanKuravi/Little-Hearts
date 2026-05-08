@@ -1,4 +1,4 @@
-# LifeLink — Blood Bank Platform
+# Little Hearts — Blood Bank Platform
 
 A full-stack blood bank management system built with the MERN stack. Donors and recipients connect through an Instagram-style privacy system — contact info stays hidden until both sides agree to connect.
 

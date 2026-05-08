@@ -65,7 +65,7 @@ export default function RegisterPage() {
         bloodType: form.bloodType, role: form.role,
         city: form.city, age: form.age ? Number(form.age) : null,
       });
-      toast('Welcome to LifeLink', 'success');
+      toast('Welcome to Little Hearts', 'success');
       navigate('/dashboard');
     } catch (err) {
       toast(err.response?.data?.message || err.message || 'Registration failed', 'error');
@@ -93,7 +93,7 @@ export default function RegisterPage() {
             <Heart size={26} color="#fff" fill="#fff" />
           </div>
           <h1 style={{ fontSize: '26px', fontWeight: 800, color: 'var(--label)', letterSpacing: '-0.035em', marginBottom: '6px' }}>
-            Join LifeLink
+            Join Little Hearts
           </h1>
           <p style={{ color: 'var(--label-3)', fontSize: '15px' }}>Create your free account in 2 minutes</p>
         </div>
