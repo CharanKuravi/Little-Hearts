@@ -3,6 +3,7 @@ const router = express.Router();
 const Donation = require('../models/Donation');
 const User = require('../models/User');
 const { protect } = require('../middleware/auth');
+const { checkAndAwardBadges, computeKarmaScore, updateStreak } = require('../services/badgeService');
 
 // @route POST /api/donations
 router.post('/', protect, async (req, res) => {
@@ -24,6 +25,17 @@ router.post('/', protect, async (req, res) => {
       $inc: { totalDonations: 1 },
       lastDonated: new Date()
     });
+
+    // Award badges and update karma/streak (non-fatal)
+    try {
+      const donor = await User.findById(req.user._id);
+      updateStreak(donor, new Date());
+      checkAndAwardBadges(donor);
+      donor.karmaScore = computeKarmaScore(donor.totalDonations, donor.donationStreak);
+      await donor.save();
+    } catch (badgeErr) {
+      console.error('Badge update failed (non-fatal):', badgeErr.message);
+    }
 
     res.status(201).json({ success: true, donation });
   } catch (error) {

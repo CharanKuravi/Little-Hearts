@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Plus, Search, MapPin, X, Droplets, Clock, ChevronRight } from 'lucide-react';
+import { Plus, Search, MapPin, X, Droplets, Clock, ChevronRight, Zap } from 'lucide-react';
 import api from '../api/axios';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../components/ui/Toast';
@@ -258,16 +258,24 @@ function RequestCard({ request, onMutate }) {
             Details
           </button>
         </Link>
+        <Link to={`/requests/${request._id}?scroll=matches`} style={{ textDecoration:'none' }}>
+          <button style={{ padding:'9px 11px', background:'rgba(0,122,255,0.1)', border:'1px solid rgba(0,122,255,0.2)', borderRadius:'10px', fontSize:'12px', fontWeight:600, color:'var(--blue)', cursor:'pointer', fontFamily:'inherit', transition:'all .15s', whiteSpace:'nowrap' }}
+            onMouseEnter={e => e.currentTarget.style.background='rgba(0,122,255,0.18)'}
+            onMouseLeave={e => e.currentTarget.style.background='rgba(0,122,255,0.1)'}
+          >
+            Find Donors
+          </button>
+        </Link>
         {alreadyResponded ? (
           <div style={{ flex:2, padding:'9px', background:'rgba(52,199,89,0.1)', border:'1px solid rgba(52,199,89,0.2)', borderRadius:'10px', fontSize:'13px', fontWeight:600, color:'#1A7F37', textAlign:'center' }}>
-            ✓ Responded
+            Responded
           </div>
         ) : (
           <button onClick={handleRespond} style={{ flex:2, padding:'9px', background:'linear-gradient(180deg,#FF453A,#FF3B30)', border:'none', borderRadius:'10px', fontSize:'13px', fontWeight:600, color:'#fff', cursor:'pointer', fontFamily:'inherit', transition:'all .18s', boxShadow:'0 2px 8px rgba(255,59,48,0.25)' }}
             onMouseEnter={e => { e.currentTarget.style.filter='brightness(1.06)'; e.currentTarget.style.transform='translateY(-1px)'; }}
             onMouseLeave={e => { e.currentTarget.style.filter='none'; e.currentTarget.style.transform='translateY(0)'; }}
           >
-            🩸 I Can Donate
+            I Can Donate
           </button>
         )}
       </div>

@@ -47,7 +47,7 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['donor', 'recipient', 'both', 'admin'],
+    enum: ['donor', 'recipient', 'both', 'admin', 'thalassemia'],
     default: 'donor'
   },
   city: {
@@ -78,6 +78,22 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  // Thalassemia Patient Mode
+  transfusionSchedule: {
+    nextTransfusionDate: { type: Date },
+    frequencyWeeks: { type: Number, min: 2, max: 4 },
+    requiredBloodType: { type: String, enum: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'] }
+  },
+
+  // Donor Engagement & Badges
+  badges: [{
+    name: { type: String, enum: ['First Drop', 'Regular Hero', 'Lifesaver', 'Legend'] },
+    awardedAt: { type: Date, default: Date.now }
+  }],
+  donationStreak: { type: Number, default: 0 },
+  karmaScore: { type: Number, default: 0 },
+  lastDonationMonth: { type: String }, // stored as "YYYY-MM"
+
   // Privacy & Connection System
   connections: [{
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },

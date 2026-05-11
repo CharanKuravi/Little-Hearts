@@ -80,6 +80,18 @@ JWT_SECRET=your_secret_key
 PORT=5000
 ```
 
+---
+
+## Environment Variables
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `MONGO_URI` | Yes | MongoDB Atlas connection string |
+| `JWT_SECRET` | Yes | Secret key for signing JWT tokens |
+| `PORT` | No | Server port (default: 5000) |
+| `NODE_ENV` | No | Environment (`development` or `production`) |
+| `GEMINI_API_KEY` | No | Google Gemini API key for the AI chat assistant. If absent, the chat widget returns a graceful fallback message. Get one at https://aistudio.google.com/app/apikey |
+
 ### 4. Seed demo data (optional)
 
 ```bash

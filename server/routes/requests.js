@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const BloodRequest = require('../models/BloodRequest');
 const { protect } = require('../middleware/auth');
+const { getMatchesForRequest } = require('../services/matchingEngine');
 
 // @route GET /api/requests
 router.get('/', async (req, res) => {
@@ -101,6 +102,18 @@ router.put('/:id', protect, async (req, res) => {
     res.json({ success: true, request });
   } catch (error) {
     res.status(400).json({ message: error.message });
+  }
+});
+
+// @route GET /api/requests/:id/matches
+// Get top-10 matched donors for a blood request (must be before GET /:id)
+router.get('/:id/matches', protect, async (req, res) => {
+  try {
+    const result = await getMatchesForRequest(req.params.id, req.user._id);
+    res.json(result);
+  } catch (err) {
+    const status = err.statusCode || 500;
+    res.status(status).json({ message: err.message || 'Internal server error' });
   }
 });
 

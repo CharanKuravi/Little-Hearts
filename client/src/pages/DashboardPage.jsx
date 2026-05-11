@@ -12,6 +12,8 @@ import Modal from '../components/ui/Modal';
 import Select from '../components/ui/Select';
 import Input from '../components/ui/Input';
 
+import AchievementsSection from '../components/ui/AchievementsSection';
+
 const BLOOD_TYPES = ['A+','A-','B+','B-','AB+','AB-','O+','O-'].map(t => ({ value: t, label: t }));
 const URGENCY_OPTS = [
   { value:'critical', label:'🚨 Critical' },
@@ -108,9 +110,10 @@ export default function DashboardPage() {
   };
 
   const tabs = [
-    { id:'overview',  label:'Overview' },
-    { id:'requests',  label:`My Requests (${myRequests.length})` },
-    { id:'donations', label:`Donations (${myDonations.length})` },
+    { id:'overview',      label:'Overview' },
+    { id:'requests',      label:`My Requests (${myRequests.length})` },
+    { id:'donations',     label:`Donations (${myDonations.length})` },
+    { id:'achievements',  label:'Achievements' },
   ];
 
   return (
@@ -337,6 +340,11 @@ export default function DashboardPage() {
           )}
         </div>
         )
+      )}
+
+      {/* Achievements */}
+      {activeTab === 'achievements' && (
+        <AchievementsSection userId={user?._id} />
       )}
 
       {/* Post Modal */}

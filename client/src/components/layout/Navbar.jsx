@@ -6,11 +6,13 @@ import api from '../../api/axios';
 import BloodTypeBadge from '../ui/BloodTypeBadge';
 
 const navLinks = [
-  { path: '/',          label: 'Home'        },
-  { path: '/donors',    label: 'Find Donors' },
-  { path: '/requests',  label: 'Requests'    },
-  { path: '/connections', label: 'Connections', authRequired: true },
-  { path: '/dashboard', label: 'Dashboard', authRequired: true   },
+  { path: '/',              label: 'Home'          },
+  { path: '/donors',        label: 'Find Donors'   },
+  { path: '/requests',      label: 'Requests'      },
+  { path: '/compatibility', label: 'Compatibility' },
+  { path: '/thalassemia',   label: 'Thalassemia', authRequired: true },
+  { path: '/connections',   label: 'Connections',  authRequired: true },
+  { path: '/dashboard',     label: 'Dashboard',    authRequired: true },
 ];
 
 export default function Navbar() {

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, MapPin, Phone, Clock, Users, Droplets, CheckCircle } from 'lucide-react';
 import api from '../api/axios';
 import { useAuth } from '../context/AuthContext';
@@ -8,18 +8,30 @@ import Card from '../components/ui/Card';
 import BloodTypeBadge from '../components/ui/BloodTypeBadge';
 import UrgencyBadge from '../components/ui/UrgencyBadge';
 import Button from '../components/ui/Button';
+import MatchedDonorsSection from '../components/ui/MatchedDonorsSection';
 
 export default function RequestDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { user } = useAuth();
   const toast = useToast();
   const [request, setRequest] = useState(null);
   const [loading, setLoading] = useState(true);
+  const matchedSectionRef = useRef(null);
 
   useEffect(() => {
     fetchRequest();
   }, [id]);
+
+  // Scroll to matched donors section if ?scroll=matches
+  useEffect(() => {
+    if (!loading && request && searchParams.get('scroll') === 'matches') {
+      setTimeout(() => {
+        matchedSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
+  }, [loading, request, searchParams]);
 
   const fetchRequest = async () => {
     setLoading(true);
@@ -220,6 +232,14 @@ export default function RequestDetailPage() {
           </div>
         </Card>
       )}
+
+      {/* AI-Matched Donors Section */}
+      <MatchedDonorsSection
+        ref={matchedSectionRef}
+        requestId={id}
+        requestStatus={request.status}
+        viewerId={user?._id}
+      />
     </div>
   );
 }

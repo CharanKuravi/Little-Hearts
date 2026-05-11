@@ -82,6 +82,37 @@ router.get('/me', protect, async (req, res) => {
   res.json({ success: true, user: req.user });
 });
 
+// @route PUT /api/auth/profile/transfusion-schedule
+router.put('/profile/transfusion-schedule', protect, async (req, res) => {
+  try {
+    if (req.user.role !== 'thalassemia') {
+      return res.status(403).json({ message: 'Only thalassemia patients can set a transfusion schedule' });
+    }
+
+    const { nextTransfusionDate, frequencyWeeks, requiredBloodType } = req.body;
+    const freq = Number(frequencyWeeks);
+
+    if (!freq || freq < 2 || freq > 4) {
+      return res.status(400).json({ message: 'Frequency must be between 2 and 4 weeks' });
+    }
+
+    const validTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+    if (requiredBloodType && !validTypes.includes(requiredBloodType)) {
+      return res.status(400).json({ message: 'Invalid blood type' });
+    }
+
+    const user = await User.findByIdAndUpdate(
+      req.user._id,
+      { transfusionSchedule: { nextTransfusionDate, frequencyWeeks: freq, requiredBloodType } },
+      { new: true, runValidators: true }
+    );
+
+    res.json({ success: true, user });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 // @route PUT /api/auth/profile
 router.put('/profile', protect, async (req, res) => {
   try {

@@ -13,6 +13,9 @@ import DashboardPage from './pages/DashboardPage';
 import ProfilePage from './pages/ProfilePage';
 import ConnectionRequestsPage from './pages/ConnectionRequestsPage';
 import AdminPage from './pages/AdminPage';
+import CompatibilityPage from './pages/CompatibilityPage';
+import ThalassemiaPage from './pages/ThalassemiaPage';
+import ChatWidget from './components/ui/ChatWidget';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -48,10 +51,13 @@ function AppLayout() {
           <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
           <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
+          <Route path="/compatibility" element={<CompatibilityPage />} />
+          <Route path="/thalassemia" element={<ProtectedRoute><ThalassemiaPage /></ProtectedRoute>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
       <Footer />
+      <ChatWidget />
     </div>
   );
 }
